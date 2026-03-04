@@ -1,0 +1,12 @@
+# Output and build artifacts
+_bmad-output/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Node modules (if any JS tooling)
+node_modules/
