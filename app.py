@@ -65,6 +65,6 @@ for row_tickers in rows:
         render_stock_card(ticker, col)
 
 st.markdown(
-    "<div style='text-align: center; color: grey; margin-top: 2rem;'>Made with ❤️ by Jenn & Claude Code</div>",
+    "<div style='text-align: center; color: grey; margin-top: 2rem;'>A BMad Project - Made with ❤️ by Jenn & Claude Code</div>",
     unsafe_allow_html=True,
 )
