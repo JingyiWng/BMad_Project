@@ -84,7 +84,7 @@ TICKER_DOMAINS = {
 
 def _logo_url(ticker: str) -> str | None:
     domain = TICKER_DOMAINS.get(ticker)
-    return f"https://logo.clearbit.com/{domain}" if domain else None
+    return f"https://www.google.com/s2/favicons?domain={domain}&sz=128" if domain else None
 
 
 def _fallback_logo_html(ticker: str) -> str:
