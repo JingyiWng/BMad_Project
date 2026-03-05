@@ -1,4 +1,3 @@
-import urllib.request
 import streamlit as st
 import plotly.express as px
 from config import PAGE_DETAIL, TICKER_NAMES
@@ -83,21 +82,9 @@ TICKER_DOMAINS = {
 }
 
 
-@st.cache_data(ttl=86400, show_spinner=False)
-def _fetch_logo_bytes(ticker: str) -> bytes | None:
-    """Fetch logo bytes server-side so the browser CSP doesn't block them."""
+def _logo_url(ticker: str) -> str | None:
     domain = TICKER_DOMAINS.get(ticker)
-    if not domain:
-        return None
-    try:
-        req = urllib.request.Request(
-            f"https://logo.clearbit.com/{domain}",
-            headers={"User-Agent": "Mozilla/5.0"},
-        )
-        with urllib.request.urlopen(req, timeout=5) as resp:
-            return resp.read()
-    except Exception:
-        return None
+    return f"https://logo.clearbit.com/{domain}" if domain else None
 
 
 def _fallback_logo_html(ticker: str) -> str:
@@ -120,9 +107,9 @@ def render_stock_card(ticker: str, col) -> None:
             # Header: logo + ticker + company name
             logo_col, name_col = st.columns([1, 4], vertical_alignment="center")
             with logo_col:
-                logo_bytes = _fetch_logo_bytes(ticker)
-                if logo_bytes:
-                    st.image(logo_bytes, width=36)
+                logo_url = _logo_url(ticker)
+                if logo_url:
+                    st.image(logo_url, width=36)
                 else:
                     st.markdown(_fallback_logo_html(ticker), unsafe_allow_html=True)
             with name_col:
