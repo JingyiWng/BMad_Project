@@ -8,7 +8,7 @@ st.set_page_config(page_title=APP_TITLE, layout="wide")
 st.markdown("""
 <style>
 .hero {
-    background: linear-gradient(135deg, #dce8ff 0%, #eaf0fb 45%, #ede8ff 100%);
+    background: linear-gradient(135deg, #b8cfff 0%, #d0e0f7 45%, #d8ceff 100%);
     border-radius: 18px;
     padding: 1.6rem 2rem;
     text-align: center;
