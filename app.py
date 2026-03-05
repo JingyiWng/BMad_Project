@@ -5,12 +5,42 @@ from components.stock_card import render_stock_card
 
 st.set_page_config(page_title=APP_TITLE, layout="wide")
 
-st.title(APP_TITLE)
-
-st.caption(f"You can select up to {MAX_STOCK_SELECTION} stocks.")
+st.markdown("""
+<style>
+.hero {
+    background: linear-gradient(135deg, #dce8ff 0%, #eaf0fb 45%, #ede8ff 100%);
+    border-radius: 18px;
+    padding: 1.6rem 2rem;
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+.hero h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+div[data-testid="stButton"] button[kind="primary"] {
+    background-color: #4F46E5;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.45rem 1.1rem;
+    width: 100%;
+}
+div[data-testid="stButton"] button[kind="primary"]:hover {
+    background-color: #4338CA;
+    border: none;
+}
+</style>
+<div class="hero">
+    <h1>Stock Tracker</h1>
+</div>
+""", unsafe_allow_html=True)
 
 selected = st.multiselect(
-    "Select stocks to display",
+    f"Select stocks to display (up to {MAX_STOCK_SELECTION})",
     options=ALL_TICKERS,
     default=None,
     placeholder="Choose one or more stocks...",
