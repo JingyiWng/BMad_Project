@@ -1,3 +1,8 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
 # Output and build artifacts
 _bmad-output/
 
